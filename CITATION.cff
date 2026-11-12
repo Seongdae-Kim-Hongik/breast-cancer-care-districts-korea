@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "If you use this code, please cite it as below."
+title: "Breast cancer treatment ratios across Korean districts: analysis code"
+authors:
+  - family-names: Kim
+    given-names: Seongdae
+    affiliation: Hongik University
+version: 1.0.0
+license: MIT
+date-released: 2026-11-12

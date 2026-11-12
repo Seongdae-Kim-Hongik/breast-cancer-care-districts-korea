@@ -1,0 +1,555 @@
+{
+  "tag": "BRCA",
+  "outcome_column": "nhis__유방암__진료실인원수",
+  "outcome_label_en": "Breast cancer treated patients (NHIS, annual)",
+  "disease_ko": "유방암",
+  "disease_en": "Breast cancer",
+  "forced": [
+    "urban_population_share",
+    "physicians_per_1000",
+    "sex_ratio",
+    "fiscal_independence",
+    "screening_uptake"
+  ],
+  "candidates": [
+    "high_risk_drinking_rate",
+    "monthly_drinking_rate",
+    "moderate_pa_rate",
+    "walking_practice_rate",
+    "current_smoking_rate",
+    "screening_normalB_obesity_share",
+    "screening_normalB_dyslipidemia_share",
+    "fertility_rate_35_39",
+    "total_fertility_rate",
+    "mean_maternal_age",
+    "mean_age_first_marriage_wife",
+    "community_gyms_per_100k",
+    "public_pools_per_100k",
+    "public_sports_facilities_per_100k",
+    "village_sports_facilities_per_100k",
+    "village_simple_exercise_facilities_per_100k",
+    "regular_employee_share",
+    "single_person_household_share",
+    "female_employment_rate"
+  ],
+  "negative_controls": [
+    "seatbelt_wearing_rate",
+    "hit_and_run_rate",
+    "fires_per_10000"
+  ],
+  "sets": {
+    "S1_narrative_full": [
+      "high_risk_drinking_rate",
+      "monthly_drinking_rate",
+      "moderate_pa_rate",
+      "walking_practice_rate",
+      "current_smoking_rate",
+      "screening_normalB_obesity_share",
+      "screening_normalB_dyslipidemia_share",
+      "fertility_rate_35_39",
+      "total_fertility_rate",
+      "mean_maternal_age",
+      "mean_age_first_marriage_wife",
+      "community_gyms_per_100k",
+      "public_pools_per_100k",
+      "public_sports_facilities_per_100k",
+      "village_sports_facilities_per_100k",
+      "village_simple_exercise_facilities_per_100k",
+      "regular_employee_share",
+      "single_person_household_share",
+      "female_employment_rate"
+    ],
+    "S2_core": [
+      "total_fertility_rate",
+      "mean_maternal_age",
+      "screening_normalB_obesity_share",
+      "walking_practice_rate",
+      "monthly_drinking_rate",
+      "female_employment_rate",
+      "public_sports_facilities_per_100k"
+    ],
+    "S3_physical_activity": [
+      "walking_practice_rate",
+      "moderate_pa_rate",
+      "public_sports_facilities_per_100k",
+      "community_gyms_per_100k",
+      "public_pools_per_100k",
+      "village_sports_facilities_per_100k",
+      "village_simple_exercise_facilities_per_100k",
+      "screening_normalB_obesity_share"
+    ],
+    "S4_socioeconomic": [
+      "female_employment_rate",
+      "regular_employee_share",
+      "single_person_household_share",
+      "mean_age_first_marriage_wife",
+      "total_fertility_rate"
+    ],
+    "S5_reproductive": [
+      "total_fertility_rate",
+      "mean_maternal_age",
+      "mean_age_first_marriage_wife",
+      "fertility_rate_35_39",
+      "single_person_household_share"
+    ],
+    "S1b_obesity_sensitivity": [
+      "high_risk_drinking_rate",
+      "monthly_drinking_rate",
+      "moderate_pa_rate",
+      "walking_practice_rate",
+      "current_smoking_rate",
+      "screening_normalB_obesity_share",
+      "screening_normalB_dyslipidemia_share",
+      "fertility_rate_35_39",
+      "total_fertility_rate",
+      "mean_maternal_age",
+      "mean_age_first_marriage_wife",
+      "community_gyms_per_100k",
+      "public_pools_per_100k",
+      "public_sports_facilities_per_100k",
+      "village_sports_facilities_per_100k",
+      "village_simple_exercise_facilities_per_100k",
+      "regular_employee_share",
+      "single_person_household_share",
+      "female_employment_rate",
+      "obesity_rate"
+    ]
+  },
+  "sensitivity_sets": [
+    "S1b_obesity_sensitivity"
+  ],
+  "sensitivity_only_vars": [
+    "obesity_rate"
+  ],
+  "offset_column": "eloc__DT_1YL20651E__여",
+  "offset_sensitivity": null,
+  "offset_fallback": "population_by_sex_ratio",
+  "exclude_years": [],
+  "vars": {
+    "urban_population_share": {
+      "key": "urban_population_share",
+      "column": "eloc__DT_1YL20421E__1인당도시지역면적현황__도시지역인구",
+      "transform": "pct_of_pop",
+      "label_en": "Urban-zone population share (%)",
+      "label_ko": "도시지역 인구 비율",
+      "expected_direction": "미지정",
+      "role": "forced",
+      "raw_key": "eloc__DT_1YL20421E__1인당도시지역면적현황__도시지역인구"
+    },
+    "physicians_per_1000": {
+      "key": "physicians_per_1000",
+      "column": "eloc__DT_1YL20981__인구천명당의료기관종사의사수＜br＞(A÷B×1000)",
+      "transform": "none",
+      "label_en": "Physicians per 1000",
+      "label_ko": "인구 천명당 의사 수",
+      "expected_direction": "+",
+      "role": "forced",
+      "raw_key": "eloc__DT_1YL20981__인구천명당의료기관종사의사수＜br＞(A÷B×1000)"
+    },
+    "sex_ratio": {
+      "key": "sex_ratio",
+      "column": "eloc__DT_1YL20701__남녀성비＜br＞(A÷B×100)",
+      "transform": "none",
+      "label_en": "Sex ratio (men per 100 women)",
+      "label_ko": "남녀성비",
+      "expected_direction": "미지정",
+      "role": "forced",
+      "raw_key": "eloc__DT_1YL20701__남녀성비＜br＞(A÷B×100)"
+    },
+    "fiscal_independence": {
+      "key": "fiscal_independence",
+      "column": "eloc__DT_1YL20891__재정자주도(세입과목개편전)",
+      "transform": "none",
+      "label_en": "Fiscal independence (%)",
+      "label_ko": "재정자주도",
+      "expected_direction": "미지정",
+      "role": "forced",
+      "raw_key": "eloc__DT_1YL20891__재정자주도(세입과목개편전)"
+    },
+    "screening_uptake": {
+      "key": "screening_uptake",
+      "column": "chk__수검률",
+      "transform": "none",
+      "label_en": "Health screening uptake (%)",
+      "label_ko": "건강검진 수검률",
+      "expected_direction": "+",
+      "role": "forced",
+      "raw_key": "chk__수검률"
+    },
+    "high_risk_drinking_rate": {
+      "key": "high_risk_drinking_rate",
+      "column": "kchs__DT_117075_H_DR_HIGH_WH__SR",
+      "transform": "none",
+      "label_en": "High-risk drinking rate (SR %)",
+      "label_ko": "고위험음주율",
+      "expected_direction": "+",
+      "role": "candidate",
+      "raw_key": "kchs__DT_117075_H_DR_HIGH_WH__SR"
+    },
+    "monthly_drinking_rate": {
+      "key": "monthly_drinking_rate",
+      "column": "kchs__DT_H_DR_MONTH__SR",
+      "transform": "none",
+      "label_en": "Monthly drinking rate (SR %)",
+      "label_ko": "월간음주율",
+      "expected_direction": "+",
+      "role": "candidate",
+      "raw_key": "kchs__DT_H_DR_MONTH__SR"
+    },
+    "moderate_pa_rate": {
+      "key": "moderate_pa_rate",
+      "column": "kchs__DT_H_EX_PHY__SR",
+      "transform": "none",
+      "label_en": "Moderate-or-higher physical activity rate (SR %)",
+      "label_ko": "중강도 이상 신체활동 실천율",
+      "expected_direction": "-",
+      "role": "candidate",
+      "raw_key": "kchs__DT_H_EX_PHY__SR"
+    },
+    "walking_practice_rate": {
+      "key": "walking_practice_rate",
+      "column": "kchs__DT_H_EX_WALK__SR",
+      "transform": "none",
+      "label_en": "Walking practice rate (SR %)",
+      "label_ko": "걷기 실천율",
+      "expected_direction": "-",
+      "role": "candidate",
+      "raw_key": "kchs__DT_H_EX_WALK__SR"
+    },
+    "current_smoking_rate": {
+      "key": "current_smoking_rate",
+      "column": "kchs__DT_H_SM__SR",
+      "transform": "none",
+      "label_en": "Current smoking rate (SR %)",
+      "label_ko": "현재흡연율",
+      "expected_direction": "+",
+      "role": "candidate",
+      "raw_key": "kchs__DT_H_SM__SR"
+    },
+    "screening_normalB_obesity_share": {
+      "key": "screening_normalB_obesity_share",
+      "column": "chk__정상B_비만관리_수검자대비비율",
+      "transform": "none",
+      "label_en": "Screening normal-B obesity-management share (%)",
+      "label_ko": "검진 정상B 비만관리 비율",
+      "expected_direction": "+",
+      "role": "candidate",
+      "raw_key": "chk__정상B_비만관리_수검자대비비율"
+    },
+    "screening_normalB_dyslipidemia_share": {
+      "key": "screening_normalB_dyslipidemia_share",
+      "column": "chk__정상B_이상지질혈증관리_수검자대비비율",
+      "transform": "none",
+      "label_en": "Screening normal-B dyslipidaemia-management share (%)",
+      "label_ko": "검진 정상B 이상지질혈증관리 비율",
+      "expected_direction": "+",
+      "role": "candidate",
+      "raw_key": "chk__정상B_이상지질혈증관리_수검자대비비율"
+    },
+    "fertility_rate_35_39": {
+      "key": "fertility_rate_35_39",
+      "column": "pop__연령별출산율_35_39",
+      "transform": "none",
+      "label_en": "Age-specific fertility rate 35-39",
+      "label_ko": "연령별 출산율(35-39세)",
+      "expected_direction": "+",
+      "role": "candidate",
+      "raw_key": "pop__연령별출산율_35_39"
+    },
+    "total_fertility_rate": {
+      "key": "total_fertility_rate",
+      "column": "pop__합계출산율",
+      "transform": "none",
+      "label_en": "Total fertility rate",
+      "label_ko": "합계출산율",
+      "expected_direction": "-",
+      "role": "candidate",
+      "raw_key": "pop__합계출산율"
+    },
+    "mean_maternal_age": {
+      "key": "mean_maternal_age",
+      "column": "pop__모평균출산연령",
+      "transform": "none",
+      "label_en": "Mean maternal age at birth (y)",
+      "label_ko": "모의 평균 출산연령",
+      "expected_direction": "+",
+      "role": "candidate",
+      "raw_key": "pop__모평균출산연령"
+    },
+    "mean_age_first_marriage_wife": {
+      "key": "mean_age_first_marriage_wife",
+      "column": "pop__평균초혼연령_아내",
+      "transform": "none",
+      "label_en": "Mean age at first marriage (wife)",
+      "label_ko": "평균 초혼연령(아내)",
+      "expected_direction": "+",
+      "role": "candidate",
+      "raw_key": "pop__평균초혼연령_아내"
+    },
+    "community_gyms_per_100k": {
+      "key": "community_gyms_per_100k",
+      "column": "fac__생활체육관",
+      "transform": "per100k",
+      "label_en": "Public community gyms per 100k",
+      "label_ko": "생활체육관 수(10만 명당)",
+      "expected_direction": "-",
+      "role": "candidate",
+      "raw_key": "fac__생활체육관"
+    },
+    "public_pools_per_100k": {
+      "key": "public_pools_per_100k",
+      "column": "fac__수영장",
+      "transform": "per100k",
+      "label_en": "Public swimming pools per 100k",
+      "label_ko": "공공 수영장 수(10만 명당)",
+      "expected_direction": "-",
+      "role": "candidate",
+      "raw_key": "fac__수영장"
+    },
+    "public_sports_facilities_per_100k": {
+      "key": "public_sports_facilities_per_100k",
+      "column": "fac__total",
+      "transform": "per100k_log1p",
+      "label_en": "Public sports facilities per 100k",
+      "label_ko": "공공체육시설 수(10만 명당)",
+      "expected_direction": "-",
+      "role": "candidate",
+      "raw_key": "fac__total"
+    },
+    "village_sports_facilities_per_100k": {
+      "key": "village_sports_facilities_per_100k",
+      "column": "vil__계",
+      "transform": "per100k",
+      "label_en": "Village sports facilities per 100k",
+      "label_ko": "마을체육시설 수(10만 명당)",
+      "expected_direction": "-",
+      "role": "candidate",
+      "raw_key": "vil__계"
+    },
+    "village_simple_exercise_facilities_per_100k": {
+      "key": "village_simple_exercise_facilities_per_100k",
+      "column": "vil__간이운동시설_계",
+      "transform": "per100k",
+      "label_en": "Village simple exercise facilities per 100k",
+      "label_ko": "마을 간이운동시설 수(10만 명당)",
+      "expected_direction": "-",
+      "role": "candidate",
+      "raw_key": "vil__간이운동시설_계"
+    },
+    "regular_employee_share": {
+      "key": "regular_employee_share",
+      "column": "eloc__DT_1YL15004__상용직비중＜br＞(A÷B×100)",
+      "transform": "none",
+      "label_en": "Regular-employee share (%)",
+      "label_ko": "상용직 비중",
+      "expected_direction": "+",
+      "role": "candidate",
+      "raw_key": "eloc__DT_1YL15004__상용직비중＜br＞(A÷B×100)"
+    },
+    "single_person_household_share": {
+      "key": "single_person_household_share",
+      "column": "eloc__DT_1YL21161__1인가구비율＜br＞(A÷B×100)",
+      "transform": "none",
+      "label_en": "Single-person household share (%)",
+      "label_ko": "1인가구비율",
+      "expected_direction": "+",
+      "role": "candidate",
+      "raw_key": "eloc__DT_1YL21161__1인가구비율＜br＞(A÷B×100)"
+    },
+    "female_employment_rate": {
+      "key": "female_employment_rate",
+      "column": "eloc__INH_1ES3A02S_03__고용률(%)__여자",
+      "transform": "none",
+      "label_en": "Female employment rate (%)",
+      "label_ko": "여성 고용률",
+      "expected_direction": "+",
+      "role": "candidate",
+      "raw_key": "eloc__INH_1ES3A02S_03__고용률(%)__여자"
+    },
+    "obesity_rate": {
+      "key": "obesity_rate",
+      "column": "kchs__DT_H_OBE_OBE__SR",
+      "transform": "none",
+      "label_en": "Obesity rate (self-reported SR %)",
+      "label_ko": "비만율(자가보고)",
+      "expected_direction": "",
+      "role": "candidate_sensitivity",
+      "raw_key": "kchs__DT_H_OBE_OBE__SR"
+    },
+    "seatbelt_wearing_rate": {
+      "key": "seatbelt_wearing_rate",
+      "column": "kchs__DT_H_BELT__SR",
+      "transform": "none",
+      "label_en": "Driver seat-belt wearing rate (SR %)",
+      "label_ko": "운전자 안전벨트 착용률",
+      "expected_direction": "0",
+      "role": "negative",
+      "raw_key": "kchs__DT_H_BELT__SR"
+    },
+    "hit_and_run_rate": {
+      "key": "hit_and_run_rate",
+      "column": "eloc__DT_1YL13901__뺑소니교통사고율＜br＞(A÷B×100)",
+      "transform": "none",
+      "label_en": "Hit-and-run traffic accident rate (%)",
+      "label_ko": "뺑소니 교통사고율",
+      "expected_direction": "0",
+      "role": "negative",
+      "raw_key": "eloc__DT_1YL13901__뺑소니교통사고율＜br＞(A÷B×100)"
+    },
+    "fires_per_10000": {
+      "key": "fires_per_10000",
+      "column": "eloc__DT_1YL21081__주민만명당화재발생건수＜br＞(A÷B×10000)",
+      "transform": "none",
+      "label_en": "Fires per 10000 residents",
+      "label_ko": "주민 만명당 화재 건수",
+      "expected_direction": "0",
+      "role": "negative",
+      "raw_key": "eloc__DT_1YL21081__주민만명당화재발생건수＜br＞(A÷B×10000)"
+    }
+  },
+  "rules": {
+    "waic_tol": 4.0,
+    "cpo_fail_frac": 0.05,
+    "main_set": "S1_narrative_full",
+    "vif_threshold": 10.0,
+    "vif_action": "report",
+    "multiverse_n": 200,
+    "windows": {
+      "W1_2011-15": [
+        2011,
+        2015
+      ],
+      "W2_2016-19": [
+        2016,
+        2019
+      ],
+      "W3_2020-24": [
+        2020,
+        2024
+      ]
+    },
+    "covid_post_from": 2020,
+    "years": [
+      2011,
+      2024
+    ],
+    "raw_rules": {
+      "likelihood": "forced-only 모형 WAIC 낮은 쪽(Poisson/NB)",
+      "set_choice": "WAIC 최소, 4 이내면 변수 적은 세트",
+      "credible": "95% CrI 1 제외",
+      "vif_drop": 10,
+      "multiverse_specs": 200,
+      "effect_scale": "per 1 SD (IRR)",
+      "spatial": "BYM2(PC prior) + RW1 연도 + iid, Type I 상호작용 민감도",
+      "windows": [
+        "2011-2015",
+        "2016-2019",
+        "2020-2024",
+        "pooled"
+      ]
+    }
+  },
+  "note": "",
+  "fixed_on": "2026-10-21, 모형 결과 열람 전 고정(std 판; v1 세트·방향 그대로)",
+  "source_json": "${BRCA_WORK}/population_final_audit/final_stage/04_분석/BRCA/sets_BRCA_std.json",
+  "version": "std",
+  "suffix": "_std",
+  "offset_E_column": "E_std",
+  "offset_E_file": "BRCA_Estd.csv",
+  "offset_E_sensitivity_column": null,
+  "offset_E_label": "age-standardised E among women, 8 age bands (E_std)",
+  "sets_after_vif": {
+    "S1_narrative_full": [
+      "high_risk_drinking_rate",
+      "monthly_drinking_rate",
+      "moderate_pa_rate",
+      "walking_practice_rate",
+      "current_smoking_rate",
+      "screening_normalB_obesity_share",
+      "screening_normalB_dyslipidemia_share",
+      "fertility_rate_35_39",
+      "total_fertility_rate",
+      "mean_maternal_age",
+      "mean_age_first_marriage_wife",
+      "community_gyms_per_100k",
+      "public_pools_per_100k",
+      "public_sports_facilities_per_100k",
+      "village_sports_facilities_per_100k",
+      "village_simple_exercise_facilities_per_100k",
+      "regular_employee_share",
+      "single_person_household_share",
+      "female_employment_rate"
+    ],
+    "S2_core": [
+      "total_fertility_rate",
+      "mean_maternal_age",
+      "screening_normalB_obesity_share",
+      "walking_practice_rate",
+      "monthly_drinking_rate",
+      "female_employment_rate",
+      "public_sports_facilities_per_100k"
+    ],
+    "S3_physical_activity": [
+      "walking_practice_rate",
+      "moderate_pa_rate",
+      "public_sports_facilities_per_100k",
+      "community_gyms_per_100k",
+      "public_pools_per_100k",
+      "village_sports_facilities_per_100k",
+      "village_simple_exercise_facilities_per_100k",
+      "screening_normalB_obesity_share"
+    ],
+    "S4_socioeconomic": [
+      "female_employment_rate",
+      "regular_employee_share",
+      "single_person_household_share",
+      "mean_age_first_marriage_wife",
+      "total_fertility_rate"
+    ],
+    "S5_reproductive": [
+      "total_fertility_rate",
+      "mean_maternal_age",
+      "mean_age_first_marriage_wife",
+      "fertility_rate_35_39",
+      "single_person_household_share"
+    ],
+    "S1b_obesity_sensitivity": [
+      "high_risk_drinking_rate",
+      "monthly_drinking_rate",
+      "moderate_pa_rate",
+      "walking_practice_rate",
+      "current_smoking_rate",
+      "screening_normalB_obesity_share",
+      "screening_normalB_dyslipidemia_share",
+      "fertility_rate_35_39",
+      "total_fertility_rate",
+      "mean_maternal_age",
+      "mean_age_first_marriage_wife",
+      "community_gyms_per_100k",
+      "public_pools_per_100k",
+      "public_sports_facilities_per_100k",
+      "village_sports_facilities_per_100k",
+      "village_simple_exercise_facilities_per_100k",
+      "regular_employee_share",
+      "single_person_household_share",
+      "female_employment_rate",
+      "obesity_rate"
+    ]
+  },
+  "input_provenance": {
+    "stage": "final_candidate_2023_direct_verified",
+    "direct_official_table": "101/DT_1B04005N",
+    "direct_official_period": "202312",
+    "direct_official_region": "48120 Changwon-si",
+    "official_url": "https://kosis.kr/statHtml/statHtml.do?orgId=101&tblId=DT_1B04005N",
+    "official_cells_matched": 66,
+    "source_status": "Residual reconstruction independently checked against directly fetched official district table; exact agreement, no further numeric change",
+    "historical_boundary_status": "Historical-area proxies retained; no full harmonization claim",
+    "models_fit": false,
+    "female_offset_unchanged_from_corrected81": true,
+    "source_panel_sha256": "7d30263a6b6f06633c7a9257a7747711d2da2fbef375a517f1e54a137d722ea4",
+    "specs_sha256": "8b59f09c394943bfd1c16ff1326faf87bac07a2b3caead820b8439522c35dd9c",
+    "sets_policy": "Same forced/candidate/sensitivity sets, same200 spec IDs and variables; report VIF, no selection change",
+    "age_source_response_sha256": "69080e684880c8c6046605db2d0cdb0d354958430c2172dd0235ba46852f7948"
+  }
+}

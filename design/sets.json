@@ -1,0 +1,125 @@
+{
+ "tag": "BRCA",
+ "outcome_column": "nhis__유방암__진료실인원수",
+ "icd": "C50",
+ "denominator": {
+  "primary": "eloc__DT_1YL20651E__여 (주민등록 여자 인구)",
+  "expected": "E = 여자 인구 × 전국 연도별 여성 조율(간접표준화)",
+  "fallback": "여자 인구 결측 시 주민등록인구(계) × (100/(100+남녀성비)) 로 근사; 그래도 불가하면 전체 인구 + 성비 강제통제(한계 명시)",
+  "note": "남성 유방암(<1%)은 분자에 포함되나 무시"
+ },
+ "fixed_on": "2026-10-21, 모형 결과 열람 전 고정(std 판; v1 세트·방향 그대로)",
+ "forced": [
+  "eloc__DT_1YL20421E__1인당도시지역면적현황__도시지역인구",
+  "eloc__DT_1YL20981__인구천명당의료기관종사의사수＜br＞(A÷B×1000)",
+  "eloc__DT_1YL20701__남녀성비＜br＞(A÷B×100)",
+  "eloc__DT_1YL20891__재정자주도(세입과목개편전)",
+  "chk__수검률"
+ ],
+ "forced_alternative": {
+  "chk__요양기관_계": "의사 밀도와 VIF>10이면 교체(민감도)",
+  "eloc__DT_1YL20643__청년인구비율__청년여성비율(19~39세)": "연령구조 2차 통제 민감도(2015~)"
+ },
+ "negative_controls": [
+  "kchs__DT_H_BELT__SR",
+  "eloc__DT_1YL13901__뺑소니교통사고율＜br＞(A÷B×100)",
+  "eloc__DT_1YL21081__주민만명당화재발생건수＜br＞(A÷B×10000)"
+ ],
+ "sets": {
+  "S1_narrative_full": [
+   "kchs__DT_117075_H_DR_HIGH_WH__SR",
+   "kchs__DT_H_DR_MONTH__SR",
+   "kchs__DT_H_EX_PHY__SR",
+   "kchs__DT_H_EX_WALK__SR",
+   "kchs__DT_H_SM__SR",
+   "chk__정상B_비만관리_수검자대비비율",
+   "chk__정상B_이상지질혈증관리_수검자대비비율",
+   "pop__연령별출산율_35_39",
+   "pop__합계출산율",
+   "pop__모평균출산연령",
+   "pop__평균초혼연령_아내",
+   "fac__생활체육관",
+   "fac__수영장",
+   "fac__total",
+   "vil__계",
+   "vil__간이운동시설_계",
+   "eloc__DT_1YL15004__상용직비중＜br＞(A÷B×100)",
+   "eloc__DT_1YL21161__1인가구비율＜br＞(A÷B×100)",
+   "eloc__INH_1ES3A02S_03__고용률(%)__여자"
+  ],
+  "S2_core": [
+   "pop__합계출산율",
+   "pop__모평균출산연령",
+   "chk__정상B_비만관리_수검자대비비율",
+   "kchs__DT_H_EX_WALK__SR",
+   "kchs__DT_H_DR_MONTH__SR",
+   "eloc__INH_1ES3A02S_03__고용률(%)__여자",
+   "fac__total"
+  ],
+  "S3_physical_activity": [
+   "kchs__DT_H_EX_WALK__SR",
+   "kchs__DT_H_EX_PHY__SR",
+   "fac__total",
+   "fac__생활체육관",
+   "fac__수영장",
+   "vil__계",
+   "vil__간이운동시설_계",
+   "chk__정상B_비만관리_수검자대비비율"
+  ],
+  "S4_socioeconomic": [
+   "eloc__INH_1ES3A02S_03__고용률(%)__여자",
+   "eloc__DT_1YL15004__상용직비중＜br＞(A÷B×100)",
+   "eloc__DT_1YL21161__1인가구비율＜br＞(A÷B×100)",
+   "pop__평균초혼연령_아내",
+   "pop__합계출산율"
+  ],
+  "S5_reproductive": [
+   "pop__합계출산율",
+   "pop__모평균출산연령",
+   "pop__평균초혼연령_아내",
+   "pop__연령별출산율_35_39",
+   "eloc__DT_1YL21161__1인가구비율＜br＞(A÷B×100)"
+  ],
+  "REF_forced_only": []
+ },
+ "pairwise_vif_watch": [
+  [
+   "pop__모평균출산연령",
+   "pop__평균초혼연령_아내",
+   "pop__연령별출산율_35_39"
+  ],
+  [
+   "vil__계",
+   "vil__간이운동시설_계"
+  ],
+  [
+   "kchs__DT_H_DR_MONTH__SR",
+   "kchs__DT_117075_H_DR_HIGH_WH__SR"
+  ],
+  [
+   "fac__total",
+   "fac__생활체육관",
+   "fac__수영장"
+  ]
+ ],
+ "rules": {
+  "likelihood": "forced-only 모형 WAIC 낮은 쪽(Poisson/NB)",
+  "set_choice": "WAIC 최소, 4 이내면 변수 적은 세트",
+  "credible": "95% CrI 1 제외",
+  "vif_drop": 10,
+  "multiverse_specs": 200,
+  "effect_scale": "per 1 SD (IRR)",
+  "spatial": "BYM2(PC prior) + RW1 연도 + iid, Type I 상호작용 민감도",
+  "windows": [
+   "2011-2015",
+   "2016-2019",
+   "2020-2024",
+   "pooled"
+  ]
+ },
+ "main_set_policy": "시리즈 규칙(table2-full-hypothesis-set): 주모형 = S1_narrative_full(게이트 통과분) + forced; 규칙 선택 간명 세트는 민감도",
+ "offset_E_column": "E_std",
+ "offset_E_file": "BRCA_Estd.csv",
+ "offset_E_label": "age-standardised E among women, 8 age bands (E_std)",
+ "std_note": "2026-10-21 PLAN R31(결과 전 사전지정): v1 sets_BRCA.json 복사, forced 에서 고령인구비율만 제거(간접 연령표준화와 이중보정), 나머지 동일. 주분석 E = E_std(02_패널/BRCA_Estd.csv, 38 산출; 여성 주민등록 연령구조 × 전국 C50 연령별 진료율, 8구간 10세·70+, 연도별 재척도). 남성 유방암(<1%)은 분자에 포함(한계). 80+ 강제통제(std3형)는 결과를 보고 판단하지 않고 민감도로만 둔다."
+}
